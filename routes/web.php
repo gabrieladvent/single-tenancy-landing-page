@@ -14,14 +14,6 @@ use App\Settings\SchoolSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/** Abort 404 bila modul dimatikan di Settings (docs/struktur.md §7). */
-function pastikanModulAktif(string $key): void
-{
-    if (! (app(SchoolSettings::class)->modul_aktif[$key] ?? false)) {
-        abort(404);
-    }
-}
-
 Route::get('/', function () {
     return view('public.home', [
         'statistik' => Statistik::orderBy('urutan')->get(),
