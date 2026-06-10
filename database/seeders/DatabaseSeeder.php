@@ -14,11 +14,17 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Admin panel
-        User::updateOrCreate(
+        // Admin panel + role super_admin (bypass semua izin Shield)
+        $admin = User::updateOrCreate(
             ['email' => 'admin@sekolah.test'],
             ['name' => 'Admin Sekolah', 'password' => bcrypt('password')],
         );
+
+        $superAdmin = \Spatie\Permission\Models\Role::firstOrCreate([
+            'name' => config('filament-shield.super_admin.name', 'super_admin'),
+            'guard_name' => 'web',
+        ]);
+        $admin->assignRole($superAdmin);
 
         // Sub-profil (tipe=sistem, slug terpesan) — docs/struktur.md §3
         $subProfil = [
