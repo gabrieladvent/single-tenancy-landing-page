@@ -129,20 +129,6 @@ resources/
 routes/web.php           # route publik + sitemap
 docs/                    # desain.md, arsitektur.md, struktur.md
 ```
-
----
-
-## 🌐 Deploy (1 sekolah = 1 deploy)
-
-1. Clone repo → `composer install --no-dev` → `npm ci && npm run build`.
-2. Atur `.env` (DB, `APP_URL`, mail). Pastikan `APP_URL` = domain asli.
-3. `php artisan migrate --seed` lalu `php artisan storage:link`.
-4. Login `/kelola` → isi **Pengaturan Sekolah** (logo, tema, kontak, modul).
-5. Pasang domain + SSL (Let's Encrypt via web server / panel hosting).
-6. Backup terjadwal: database + folder `storage/app/public`.
-
-**Sekolah baru** = ulangi langkah di atas dari starter repo yang sama (`git pull` untuk dapat update fitur).
-
 ---
 
 ## 🧭 Catatan
@@ -152,5 +138,3 @@ docs/                    # desain.md, arsitektur.md, struktur.md
 - **Out of scope v1:** dark mode, multi-bahasa, login siswa/portal nilai, PPDB online (disiapkan untuk v2), multi-tenant/SaaS.
 
 ---
-
-*Dibuat dengan ❤️ menggunakan Laravel & Filament.*
