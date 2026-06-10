@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /kelola
+
+Sitemap: /sitemap.xml
